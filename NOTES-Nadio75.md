@@ -16,16 +16,29 @@ I'll lean toward responding to change — I'll start with a bare-minimum card (t
 
 ### Question 3 — Critique and redesign
 
-**Three problems with the "TaskBoard Pro" brief:**
+Question 3 — Critique and redesign
 
-1. No working software until week 9 violates the Manifesto value of working software over comprehensive documentation, and Principle 3 ("deliver working software frequently"). A 9-week gap between planning and any runnable version means the first real feedback on whether the design actually works comes far too late to cheaply fix anything.
+Sample Brief — "TaskBoard Pro" (Waterfall-style)
 
-2. "No further requirement changes permitted once design begins" directly violates responding to change over following a plan and Principle 2 ("welcome changing requirements, even late in development"). Freezing requirements before any real usage has happened guarantees the team builds against assumptions instead of evidence.
+Phase 1 (Weeks 1–2): Gather complete requirements from all stakeholders and sign off on a full specification document covering every feature boards, cards, comments, labels, permissions, notifications, and reporting.
 
-3. A single all-at-once QA phase across every feature simultaneously (Phase 4) violates Principle 1 ("continuous delivery of valuable software") and Principle 7 ("working software is the primary measure of progress"). Bugs found this late, across the whole system at once, are far more expensive to fix than bugs caught incrementally after each small piece ships.
+- I appreciate that the Waterfall-style approach provides a clear plan and timeframe, which can help establish structure and expectations. However, gathering complete requirements upfront and requiring sign-off on a full specification creates real risk for my Book Tracker specifically. As a solo builder, I don't yet know whether I'll want a star rating, a "date started/finished" pair, or genre tags until I've actually lived with the app day to day signing off on a fixed feature list now means guessing at requirements I can't validate yet.
 
-**Redesign — first two iterations for my Book Tracker:**
+- Rather than defining and signing off every feature upfront, an iterative approach would let me build the smallest useful version of the Book Tracker first (title, author, status) and let each additional feature ratings, notes, progress tracking be added only once actually using the app reveals I want it. This creates room to validate assumptions early rather than spending weeks specifying features I may never end up needing.
 
-Iteration 1 (roughly 1 week): Build the smallest possible working slice — a single board with hardcoded columns (Want to Read / Reading / Finished) and the ability to add a card with just a title and author. No auth, no persistence beyond local storage, no styling polish. The goal is a working, demoable thing on day one, not a complete spec.
+Refined plan (iterative, for my Book Tracker):
 
-Iteration 2 (roughly 1 week): Based on actually using Iteration 1 for a few days, add whatever friction I actually hit — likely persistence (so cards don't vanish on refresh) and the ability to move a card between columns. I don't decide this in advance; I decide it based on what Iteration 1 revealed I was missing.
+Iteration 1 (Week 1): Build a single board with hardcoded columns (Want to Read / Reading / Finished) and the ability to add a card with just a title and author. Demo it to myself by actually using it for a few days.
+# repeat and expand the above sequence for each additional feature, based on what using the app reveals is missing
+
+Phase 2 (Weeks 3–4): Complete UI/UX design for all screens, based on the signed-off spec. No further requirement changes permitted once design begins.
+
+- Issue/problem: Locking in UI/UX for every screen before any real usage assumes I already know what the Book Tracker needs to look like. In practice, I won't know if I want a progress bar, a list view, or a card-grid layout until I've used a rough version myself banning changes at this stage contradicts Agile's iterative nature.
+
+Phase 3 (Weeks 5–9): Build the entire application per spec and design. No demos until the build phase is complete.
+
+- Issue/problem: Waiting weeks before seeing a working version of my own Book Tracker delays the exact feedback loop I need as a solo builder if my card schema or column structure turns out wrong, I won't find out until it's expensive to change.
+
+Phase 4 (Weeks 10–11): Full QA testing pass across all features simultaneously. Phase 5 (Week 12): Launch to all users at once.
+
+- Issue/problem: Testing everything at once, this late, means a bug in something simple (like adding a book) could surface at the same time as a bug in something complex (like progress tracking), making both harder to isolate and fix than if I'd tested each small feature as I built it.
