@@ -50,18 +50,31 @@ For TrackFlow, the class-wide build, the roles plausibly split like this: the in
 For my Daily App, where I'm all three roles at once, I expect to neglect the Product Owner role first. When I'm busy, it's easy to just open the editor and start coding the next obvious thing (Dev Team mode) without stepping back to ask whether that's actually the highest-priority item on my backlog (Product Owner mode), the coding work feels more productive in the moment even when it isn't the right work. A concrete habit to stop this: before starting any coding session, spend 2 minutes re-reading my Sprint Backlog and confirming the item I'm about to work on is still the right one, instead of just picking up wherever I left off.
 
 Question 2 — Definition of Ready, Definition of Done (Book CRUD epic only)
+
 Definition of Ready:
+
 •	The backlog item is written as a user story for example "As a reader, I want to add a book with a title and author so I can start tracking it"
+
 •	Acceptance criteria are listed and specific enough to know when the story is satisfied
+
 •	The exact fields involved for example title, author, genre, etc. are named, not left vague
+
 •	No unresolved dependency on another epic for example it doesn't require Search & Filter to exist first
+
 •	I have a rough sense of how long it'll take, even if not a formal estimate
+
 Definition of Done:
+
 •	The feature works end-to-end when I use it myself, not just in theory
+
 •	Data persists across a page refresh, not just in memory
+
 •	The change is committed to main with a Conventional Commits message
+
 •	I manually tested the happy path and at least one edge case for example, adding a book with a blank title
+
 •	The README reflects the change if it affects how the app is used
+
 Question 3: The artifact most at risk
 Of the three Scrum artifacts, the Sprint Backlog is most at risk of being skipped or faked in a solo, daily-cadence project like mine. Without a team relying on it to know what I've committed to, it's tempting to just work directly off the Product Backlog in an ad hoc way pulling whatever feels most interesting that day rather than deliberately committing to a fixed, smaller set of items for a given stretch of work.
 The actual cost of skipping it is scope drift: without a real Sprint Backlog acting as a boundary, I lose the discipline that stops me from constantly context-switching between epics, and I lose an honest record of what I actually planned to build in a given period versus what I opportunistically added mid-stream which undermines the whole point of practicing Scrum instead of just building the app in whatever order I feel like.
