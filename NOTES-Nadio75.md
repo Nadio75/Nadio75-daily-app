@@ -65,3 +65,29 @@ Definition of Done:
 Question 3: The artifact most at risk
 Of the three Scrum artifacts, the Sprint Backlog is most at risk of being skipped or faked in a solo, daily-cadence project like mine. Without a team relying on it to know what I've committed to, it's tempting to just work directly off the Product Backlog in an ad hoc way pulling whatever feels most interesting that day rather than deliberately committing to a fixed, smaller set of items for a given stretch of work.
 The actual cost of skipping it is scope drift: without a real Sprint Backlog acting as a boundary, I lose the discipline that stops me from constantly context-switching between epics, and I lose an honest record of what I actually planned to build in a given period versus what I opportunistically added mid-stream which undermines the whole point of practicing Scrum instead of just building the app in whatever order I feel like.
+
+## Assignment 2.3
+Question 1 — Choosing a view
+
+I'd use Board as my Daily App's primary day-to-day view, since it mirrors the actual Board → Column → Card structure the app itself is built around, making it the most natural way to see what's in progress at a glance and drag items forward as I work. List view would help when I need to scan or bulk-edit details across many tasks at once — for example, going through every backlog item to fill in a custom field like Priority, which is tedious to do one card at a time on a Board. Timeline would help specifically when I'm trying to see how Sprint 1's items are spread across the days I've realistically got to work on them, especially once tasks have due dates and I want to spot if I've overloaded a single day.
+
+Question 2 — Custom fields, deliberately
+
+I'll use three custom fields: Priority (High/Medium/Low), which exists to support filtering "what should I actually work on next" when I have limited time in a session; Epic (Book CRUD, Board & Columns, Search & Filter, Reading Progress, Notes & Ratings), which exists to support grouping and reporting on progress per feature area, since sections alone won't show me epic-level completion percentage in a filtered view; and Status Detail (Not Started/In Progress/Blocked), which exists to support a saved filter that surfaces anything currently blocked, since Asana's built-in complete/incomplete toggle doesn't distinguish "blocked" from "just haven't started yet."
+
+Question 3 — Tag or field?
+
+Something that should be a tag: needs-research — a free-form, cross-cutting label I might want to apply to tasks across multiple epics whenever I hit something I don't know how to build yet (e.g. a task in Book CRUD and a task in Search & Filter might both need research, even though they're in different epics). Something that should be a custom field: Epic, since every task belongs to exactly one epic and I want to filter and report on it structurally, not just search for a loose label. If I swapped them — making Epic a tag and needs-research a custom field — I'd lose real structure on Epic (tags don't enforce "pick exactly one value," so a task could accidentally get tagged with two epics or none, breaking any report that assumes one-to-one), and I'd add unnecessary rigidity to needs-research, which doesn't need a fixed set of possible values or per-project scoping — it just needs to exist or not.
+
+NOTES.md Updates
+1. What the given backlog exercise revealed
+
+Building QuickNotes first genuinely changed how I approached my own project afterward. Practicing on a throwaway backlog meant I made my UI-organization mistakes there instead of on my real project — for example, I initially grouped items a bit loosely by feel rather than by a clear epic boundary, and only tightened that up once I saw how much cleaner the Auth/Notes CRUD/Organization split looked when each section had a clear reason for existing. By the time I built my Book Tracker's sections, I went straight to matching them exactly to my Assignment 2.1 epics instead of re-deciding grouping logic from scratch.
+
+2. Where Sprint 1 Backlog and reality disagreed
+
+Moving sprint-1-backlog.md into Asana didn't reveal a scoping problem with the items themselves, but it did surface a sequencing issue I hadn't thought through on paper: "Display books grouped into their status columns" genuinely depends on "Add a new book with title and author" existing first, since there's nothing to display until books can be created. On paper, both felt like independent Sprint 1 items I'd just work through in any order — setting a real dependency in Asana forced me to actually think about build order, not just feature scope.
+
+3. The field vs. tag call I almost got wrong
+
+I ran into this directly during the practice project. I set out to create a needs-design tag, but couldn't find where to add tags cleanly in the UI in the moment, and ended up creating it as a custom field instead. It technically worked for filtering, but it wasn't the right tool for the job — a tag would have let me apply needs-design loosely across unrelated tasks without forcing every task in the project to have some value for it, while a field implies every task should have an opinion on it, which "needs design or doesn't" isn't really true for something like "delete a note." It was a good real example of the exact distinction Question 3 asks about — I didn't just theorize about the field/tag line, I actually blurred it under mild UI friction, which made the distinction concrete rather than abstract.
