@@ -130,3 +130,13 @@ Using the deck's Fibonacci-like scale (1, 2, 3, 5, 8...) and story 1 as my refer
 •	Display grouped columns (as originally written, un-split): 8 bumped up from my earlier 5, once I actually apply the INVEST failure honestly. The deck's point about growing gaps reflecting growing uncertainty at larger sizes applies directly here: the more I dug in, the less confident I got about its true size, which is exactly the signal an 8 (not a 5) is supposed to represent.
 Since I'm working solo, I don't get Planning Poker's actual value the deck is clear that "the value is the gap," the disagreement between team members' independent estimates. Without a second person, I can't surface my own blind spots that way; the closest substitute is deliberately re-estimating a story after applying INVEST, which is what surfaced story 5's real size here.
 
+## Assignment 2.4 – NOTES Updates
+
+### 1. What changed between backlog phrase and real story
+When I rewrote “Display books grouped into columns” into a full user story with a “so that” clause, I realised it was actually an epic in disguise. As a raw backlog item it felt simple, but once I named the user and the reason, the dependencies on the other stories became obvious. That forced me to raise the estimate from 5 to 8 points and plan to split it later.
+
+### 2. The retro, from the inside
+One real takeaway I’m applying from the TrackFlow mock sprint is to keep the board honest — only move a card when real work has started. That’s why I created the empty feature folders before moving the Add and Edit stories to In Progress.
+
+### 3. Estimating with real stories vs. rough backlog items
+My estimates felt more confident this time. Having full user stories + acceptance criteria made the size of each item clearer than when they were just short backlog phrases. The Display columns story was the exception — writing it properly actually made me less confident and raised the points, which is exactly what should happen.
