@@ -92,3 +92,53 @@ Moving sprint-1-backlog.md into Asana didn't reveal a scoping problem with the i
 
 I ran into this directly during the practice project. I set out to create a needs-design tag, but couldn't find where to add tags cleanly in the UI in the moment, and ended up creating it as a custom field instead. It technically worked for filtering, but it wasn't the right tool for the job — a tag would have let me apply needs-design loosely across unrelated tasks without forcing every task in the project to have some value for it, while a field implies every task should have an opinion on it, which "needs design or doesn't" isn't really true for something like "delete a note." It was a good real example of the exact distinction Question 3 asks about — I didn't just theorize about the field/tag line, I actually blurred it under mild UI friction, which made the distinction concrete rather than abstract.
 
+## Assignment 2.4
+Question 1: Rewrite Sprint 1 as real user stories
+
+1.	As a reader, I want to add a book by entering its title and author, so that I can start tracking it on my board.
+
+2.	As a reader, I want to edit a book's title or author after adding it, so that I can correct mistakes without deleting and re-adding the book.
+
+3.	As a reader, I want to delete a book I no longer want tracked, so that my board only shows books I actually care about.
+
+4.	As a reader, I want to change a book's status (Want to Read / Reading / Finished / Abandoned), so that it reflects my actual progress with it.
+
+5.	As a reader, I want to see all my books organized into columns by status, so that I can understand my reading life at a glance without hunting for anything.
+
+Question 2: Acceptance criteria
+
+1.	Add a book: A form exists with title and author fields. Submitting both creates a card in Want to Read. Submitting a blank title shows a visible error and blocks submission. The book persists after a page refresh.
+
+2.	Edit a book: Each card has an accessible edit action. Editing opens a form pre-filled with current values. Saving updates the card immediately. Canceling leaves original values unchanged. Edits persist after a refresh.
+
+3.	Delete a book: Each card has an accessible delete action. Confirming removes the card immediately. The deleted book doesn't reappear after a refresh. Deleting one book doesn't affect any other book's data.
+
+4.	Set a book's status: Each card has a way to change status. Selecting a new status moves the card to the matching column. The change persists after a refresh. Only the four valid statuses are selectable.
+
+5.	Display grouped columns: The board shows exactly 4 columns matching the 4 statuses. Each book appears in exactly one column matching its current status. An empty column shows an empty state, not an error. The layout updates immediately when status changes.
+
+Question 3: INVEST check
+
+•	Independent — Fails. It hard-depends on stories 1 and 4 being finished first (nothing to group without books, no columns to sort into without status), which the deck defines Independent as specifically avoiding.
+
+•	Negotiable — Passes; exact layout isn't locked in.
+
+•	Valuable — Passes; a real user, me, cares about seeing progress at a glance.
+
+•	Estimable — Passes, once split.
+
+•	Small — Passes if split; fails as originally written since it bundles UI + data-wiring + all four statuses at once.
+
+•	Testable — Passes; the acceptance criteria are concrete.
+
+Question 4: Estimating alone, again
+
+Using the deck's Fibonacci-like scale (1, 2, 3, 5, 8...) and story 1 as my reference point:
+
+•	Add a book: 3
+•	Edit a book: 2
+•	Delete a book: 1
+•	Set a book's status: 3
+•	Display grouped columns (as originally written, un-split): 8 bumped up from my earlier 5, once I actually apply the INVEST failure honestly. The deck's point about growing gaps reflecting growing uncertainty at larger sizes applies directly here: the more I dug in, the less confident I got about its true size, which is exactly the signal an 8 (not a 5) is supposed to represent.
+Since I'm working solo, I don't get Planning Poker's actual value the deck is clear that "the value is the gap," the disagreement between team members' independent estimates. Without a second person, I can't surface my own blind spots that way; the closest substitute is deliberately re-estimating a story after applying INVEST, which is what surfaced story 5's real size here.
+
