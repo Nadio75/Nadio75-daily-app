@@ -91,3 +91,4 @@ Moving sprint-1-backlog.md into Asana didn't reveal a scoping problem with the i
 3. The field vs. tag call I almost got wrong
 
 I ran into this directly during the practice project. I set out to create a needs-design tag, but couldn't find where to add tags cleanly in the UI in the moment, and ended up creating it as a custom field instead. It technically worked for filtering, but it wasn't the right tool for the job — a tag would have let me apply needs-design loosely across unrelated tasks without forcing every task in the project to have some value for it, while a field implies every task should have an opinion on it, which "needs design or doesn't" isn't really true for something like "delete a note." It was a good real example of the exact distinction Question 3 asks about — I didn't just theorize about the field/tag line, I actually blurred it under mild UI friction, which made the distinction concrete rather than abstract.
+
