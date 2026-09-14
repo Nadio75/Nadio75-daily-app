@@ -155,3 +155,21 @@ Viewer other cohort trainees, if anyone wants to see how I structured my kickoff
 Question 3: Sync or async?
 
 For a solo kickoff, almost everything is naturally async, since there's no team to synchronize with but I'd still treat "getting a real comment thread going" as needing a live-ish moment: a quick Meet stand-up works well for surfacing that first blocking question or ambiguity in my Scope section, since waiting on async comments could stall the whole kickoff. Status updates and task assignment (all to myself, into my Sheet tracker) are fully async there's no one to coordinate with, so writing it once and moving on is strictly more efficient than a meeting. The one place async could fail me: if my instructor's comment on the Doc raises something structural (e.g., "your Scope is too broad for 4 weeks"), that's worth a quick sync check-in rather than a long comment thread, since scope changes benefit from real-time back-and-forth more than a status update does.
+
+## 3.1 Reflection
+
+1. What the TidyUp practice revealed
+
+Building TidyUp first meant I made my "who leaves the comment vs. who owns the edit" mistakes on a throwaway doc instead of my real one — the first time I tried Suggesting mode, I almost forgot to switch back to Editing mode afterward, which would've meant my real Book Tracker edits accidentally showed up as suggestions instead of direct changes. Catching that on TidyUp meant I didn't lose that moment on the doc that actually matters.
+
+2. The permission you almost got wrong
+
+Building the real Book Tracker folder, I almost left General access on "Anyone with the link" out of habit, since that's Drive's more convenient default — I caught it because my Question 2 answer specifically argued for Restricted access, and going back to reread my own reasoning is what stopped me from undermining it in practice.
+
+3. Sync vs. async, in practice
+
+My Question 3 split mostly held task assignment and status updates stayed comfortably async since there's no one to coordinate with. The one place it didn't fully hold: I'd planned the instructor's comment thread as purely async, but running the actual stand-up made me realize a scope question ("does deferring Search & Filter make sense?") is exactly the kind of thing that benefits from a quick back-and-forth rather than waiting on a comment reply — which matches what I predicted in my original Question 3 answer, just confirmed it for real this time.
+
+Stretch Goal: 4th permission tier
+
+I'd add a Commenter + resolved-status view tier for a hypothetical non-technical stakeholder (e.g., a mentor checking progress) practically, this is still "Commenter" in Drive's actual permission model, but paired with a separate, simplified status-only Sheet view (or a read-only summary tab) rather than giving them access to the full working tracker. Plain Viewer alone isn't enough because they'd have no way to leave feedback or ask a clarifying question without pinging me directly outside the tool. Commenter solves that by letting them react in-context without touching structure.
