@@ -136,7 +136,22 @@ Since I'm working solo, I don't get Planning Poker's actual value the deck is cl
 When I rewrote “Display books grouped into columns” into a full user story with a “so that” clause, I realised it was actually an epic in disguise. As a raw backlog item it felt simple, but once I named the user and the reason, the dependencies on the other stories became obvious. That forced me to raise the estimate from 5 to 8 points and plan to split it later.
 
 ### 2. The retro, from the inside
-One real takeaway I’m applying from the TrackFlow mock sprint is to keep the board honest — only move a card when real work has started. That’s why I created the empty feature folders before moving the Add and Edit stories to In Progress.
+One real takeaway I’m applying from the TrackFlow mock sprint is to keep the board honest only move a card when real work has started. That’s why I created the empty feature folders before moving the Add and Edit stories to In Progress.
 
 ### 3. Estimating with real stories vs. rough backlog items
 My estimates felt more confident this time. Having full user stories + acceptance criteria made the size of each item clearer than when they were just short backlog phrases. The Display columns story was the exception — writing it properly actually made me less confident and raised the points, which is exactly what should happen.
+
+## Assignment 3.1
+Question 1: Suggesting mode vs. comments vs. direct edits
+
+Since I'm building solo, most of my Project Doc writing starts as direct edits but the distinction still matters once anyone else touches the doc. Direct edit: fixing a typo in the Book Tracker's Scope section myself, since I wrote it and own it outright. Suggesting mode: if my instructor proposes tightening my Timeline section's Sprint 1 dates, I'd want that as a suggestion I can accept or reject, not a silent overwrite I still own the final call on my own project's timeline. Comment: my instructor flagging "is a 4-week timeline realistic given you're solo?" on the Timeline section without touching the text a question that needs my judgment, not a rewrite.
+
+Question 2: Permissions, deliberately
+
+Editor just me. I'm the only person building Book Tracker, so I'm the only one who should be able to restructure the Drive folder or rewrite core sections.
+Commenter my instructor. Per the assignment's own note, since I'm solo, I'm inviting them specifically to leave at least one real comment they need to give feedback without being able to accidentally edit my Doc or Sheet.
+Viewer other cohort trainees, if anyone wants to see how I structured my kickoff package for reference. Read-only keeps my source of truth from getting touched by people outside the project.
+
+Question 3: Sync or async?
+
+For a solo kickoff, almost everything is naturally async, since there's no team to synchronize with but I'd still treat "getting a real comment thread going" as needing a live-ish moment: a quick Meet stand-up works well for surfacing that first blocking question or ambiguity in my Scope section, since waiting on async comments could stall the whole kickoff. Status updates and task assignment (all to myself, into my Sheet tracker) are fully async there's no one to coordinate with, so writing it once and moving on is strictly more efficient than a meeting. The one place async could fail me: if my instructor's comment on the Doc raises something structural (e.g., "your Scope is too broad for 4 weeks"), that's worth a quick sync check-in rather than a long comment thread, since scope changes benefit from real-time back-and-forth more than a status update does.
