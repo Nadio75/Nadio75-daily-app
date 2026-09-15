@@ -173,3 +173,18 @@ My Question 3 split mostly held task assignment and status updates stayed comfor
 Stretch Goal: 4th permission tier
 
 I'd add a Commenter + resolved-status view tier for a hypothetical non-technical stakeholder (e.g., a mentor checking progress) practically, this is still "Commenter" in Drive's actual permission model, but paired with a separate, simplified status-only Sheet view (or a read-only summary tab) rather than giving them access to the full working tracker. Plain Viewer alone isn't enough because they'd have no way to leave feedback or ask a clarifying question without pinging me directly outside the tool. Commenter solves that by letting them react in-context without touching structure.
+
+## Assignment 3.2
+Question 1 — Beyond the core four
+
+My README needs a Known limitations section beyond Purpose, Setup, Usage and a Contribution. Right now the repo is planning-only — feature files like AddBookForm.md and EditBookForm.md are just scaffolding, not working code. Leaving that out would actively hurt someone: if a reader clones the repo expecting a runnable app because the README's Usage section describes one, they'd waste time debugging "broken" setup steps that were never actually implemented yet. A Known limitations section stating "Sprint 1 CRUD is planned but not yet built; see docs/planning/sprint-1-backlog.md" sets accurate expectations instead of implying more exists than does.
+
+Question 2: Comment audit
+
+Comment that shouldn't be there: features/add-book/AddBookForm.md, line 1, "// Add Book feature - scaffolding for Sprint 1". This restates exactly what the filename and folder already say; it adds no information a reader doesn't already have from the path alone.
+
+Comment that's missing: there isn't one yet, because there's no real logic written — but I can point to where one will be needed. Once addBook() is actually implemented, the non-obvious "why" will be around genre being optional while title/author aren't (per docs/planning/sprint-1-backlog.md's acceptance criteria: "Optional field: Genre" vs. "Validation: Title and Author cannot be empty"). A future reader won't know why genre gets special treatment unless a comment explains it — something like "// genre is optional: readers often don't know it yet when first logging a book."
+
+Question 3: What makes a decision ADR-worthy
+
+My real ADR-worthy decision: making Epic a custom field rather than a tag in my task tracker (from Assignment 2.4). What made it worth documenting instead of a routine detail: it wasn't obvious, and getting it wrong had a real consequence — tags don't enforce "pick exactly one value," so treating Epic as a tag would let a task get double-tagged or untagged, silently breaking any report that assumes one task belongs to exactly one epic. A routine detail (e.g., which exact hex color I used for a label) doesn't need an ADR because getting it "wrong" has no downstream effect on how the system behaves — this one does.
