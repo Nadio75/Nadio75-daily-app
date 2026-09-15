@@ -199,3 +199,10 @@ The scaffolding comment I flagged in Question 2 (// Add Book feature - scaffoldi
 
 3. The line between decision and detail
 After writing a real ADR, I'd document fewer decisions than my original Question 3 answer implied, not more. Writing out the Epic-as-custom-field ADR made me realize the bar isn't "was this a deliberate choice" — plenty of deliberate choices (like which exact bcrypt round count style comment to use) don't need a full ADR. The real bar is "would getting this wrong silently break something downstream" — that's a narrower set than I first thought.
+
+## Links
+
+- README: https://github.com/Nadio75/Nadio75-daily-app/blob/assignment-3-2/README.md
+- ADR (Task 7): https://github.com/Nadio75/Nadio75-daily-app/blob/assignment-3-2/docs/decisions/0001-epic-as-custom-field.md
+- Real code + comment audit + function doc (Task 6/8): https://github.com/Nadio75/Nadio75-daily-app/blob/assignment-3-2/features/add-book/AddBookForm.md
+- CONTRIBUTING.md (Stretch A): https://github.com/Nadio75/Nadio75-daily-app/blob/assignment-3-2/CONTRIBUTING.md
