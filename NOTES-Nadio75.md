@@ -188,3 +188,21 @@ Comment that's missing: there isn't one yet, because there's no real logic writt
 Question 3: What makes a decision ADR-worthy
 
 My real ADR-worthy decision: making Epic a custom field rather than a tag in my task tracker (from Assignment 2.4). What made it worth documenting instead of a routine detail: it wasn't obvious, and getting it wrong had a real consequence — tags don't enforce "pick exactly one value," so treating Epic as a tag would let a task get double-tagged or untagged, silently breaking any report that assumes one task belongs to exactly one epic. A routine detail (e.g., which exact hex color I used for a label) doesn't need an ADR because getting it "wrong" has no downstream effect on how the system behaves — this one does.
+
+## NOTES.md reflections
+
+1. What the sample exercise revealed
+Documenting the throwaway QuickNotes signup function first meant I'd already practiced the "comment only what earns its place" instinct before touching real code — when I wrote the real addBook() function, I didn't comment the required-field check or the db.books.insert() call, the same way I'd left the email-format check uncommented in QuickNotes. The genre-optional comment was the one place that mirrored QuickNotes' bcrypt-rounds comment: both are decisions a reader can't infer from the code alone.
+
+2. The comment you were wrong about
+The scaffolding comment I flagged in Question 2 (// Add Book feature - scaffolding for Sprint 1) was actually easier to deal with than expected — I didn't need to carefully rewrite it, since replacing the whole placeholder with real code made the comment obsolete outright rather than needing a nuanced edit.
+
+3. The line between decision and detail
+After writing a real ADR, I'd document fewer decisions than my original Question 3 answer implied, not more. Writing out the Epic-as-custom-field ADR made me realize the bar isn't "was this a deliberate choice" — plenty of deliberate choices (like which exact bcrypt round count style comment to use) don't need a full ADR. The real bar is "would getting this wrong silently break something downstream" — that's a narrower set than I first thought.
+
+## Links
+
+- README: https://github.com/Nadio75/Nadio75-daily-app/blob/assignment-3-2/README.md
+- ADR (Task 7): https://github.com/Nadio75/Nadio75-daily-app/blob/assignment-3-2/docs/decisions/0001-epic-as-custom-field.md
+- Real code + comment audit + function doc (Task 6/8): https://github.com/Nadio75/Nadio75-daily-app/blob/assignment-3-2/features/add-book/AddBookForm.md
+- CONTRIBUTING.md (Stretch A): https://github.com/Nadio75/Nadio75-daily-app/blob/assignment-3-2/CONTRIBUTING.md
