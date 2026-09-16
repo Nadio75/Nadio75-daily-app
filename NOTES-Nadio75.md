@@ -206,3 +206,119 @@ After writing a real ADR, I'd document fewer decisions than my original Question
 - ADR (Task 7): https://github.com/Nadio75/Nadio75-daily-app/blob/assignment-3-2/docs/decisions/0001-epic-as-custom-field.md
 - Real code + comment audit + function doc (Task 6/8): https://github.com/Nadio75/Nadio75-daily-app/blob/assignment-3-2/features/add-book/AddBookForm.md
 - CONTRIBUTING.md (Stretch A): https://github.com/Nadio75/Nadio75-daily-app/blob/assignment-3-2/CONTRIBUTING.md
+
+## Assignment 3.3
+## Part 1: Written Decisions
+
+Question 1: Channel choice, for real
+
+The most recent real messages I've sent about the Daily App were my commit messages and PR descriptions — which is its own channel choice. Commits like "Add real code with comment fix (Task 6) and Epic ADR (Task 7)" bundle two unrelated changes into one message, which works as a Slack-style quick note but fails as a durable record: six months from now, someone searching history for when the ADR landed gets a message that's half about something else. What I'd change specifically: split into two commits, each with one message about one change. The durable, searchable channel deserves the more deliberate treatment.
+
+Question 2: The self-check you did or skipped
+
+Honest answer: I asked too early on the PowerShell heredoc issue. I pasted a cat > file << 'EOF' command, it hung with >> prompts, and I asked what was wrong rather than first noticing that my prompt said PS C:\Users\User\ — the "PS" was right there telling me I was in PowerShell, not Bash. The self-check I skipped was the cheapest one available: read the error state I was already looking at. I did the same thing again a minute later with cat > on the README file.
+
+Question 3: Specific vs. vague feedback, side by side
+
+Specific version, on my own AddBookForm.md: "The file is named .md but contains only JavaScript — no markdown. That means GitHub renders the code as prose instead of syntax-highlighting it, and editors won't lint it. Suggest renaming to AddBookForm.js, or keeping .md and wrapping the code in a fenced code block if the file is meant to be documentation."
+
+Vague version: "file structure could be cleaner."
+
+The difference in one sentence: the specific version names what's wrong, why it costs something concrete, and what to do about it — the vague version leaves all three for the reader to guess.
+
+## Part 2: BudgetBuddy sample
+
+Task 1: Channel rewrite
+
+That message crams a bug report and a scope decision into one. Split:
+
+Slack: "Heads up — budget sync is broken. Repro: [steps]. Opening a ticket now, will update this thread when I know the cause."
+
+Email: Subject: "Decision needed: export feature in or out of this sprint?" Body: "We haven't decided whether export lands this sprint. In favor: [reason]. Against: [reason]. I need a call by Thursday so I can plan the rest of my week. Happy to discuss live if that's easier."
+
+The bug is time-sensitive and disposable, so Slack. The scope decision needs a record and a deadline, so email.
+
+Task 2: Question rewrite
+
+Context: The category totals on the dashboard don't match the sum of individual transactions — this started after yesterday's updateBudget() change.
+
+What I tried: Logged the transaction array before and after the recalculation — the input data is correct, so the bug is in the aggregation, not the source. I also checked whether it's a rounding issue by comparing to two decimal places; it isn't.
+
+Exact behavior: For the Groceries category, individual transactions sum to R1,240.50, but the dashboard shows R1,180.00 — a R60.50 gap that matches exactly one transaction that's being skipped.
+
+Ask: Does updateBudget() have a known issue with transactions that have a null category, or should I be looking somewhere else?
+
+Task 3: PR feedback on updateBudget()
+
+updateBudget() is doing three separable jobs in one 40-line block: input validation, recalculating category totals, and the database write. That makes it hard to test any one behavior in isolation — right now you can't unit-test the recalculation logic without also hitting the database.
+
+Suggested direction: pull the recalculation into its own pure function that takes transactions and returns totals, then have updateBudget() call it. Validation could move to the top as a guard clause or its own helper. That'd also make the totals bug easier to isolate, since you could test the calculation directly.
+
+Task 4: Receiving it well
+
+Good catch on the testability angle — I hadn't thought about the fact that the recalculation can't be tested without a database round-trip, and that's probably why I've been debugging the totals issue by hand.
+
+One clarifying question: do you think validation should be a guard clause inside updateBudget(), or a separate function the caller invokes first? I can see arguments for both, and I'd rather match whatever pattern we're using elsewhere.
+
+Thanks for taking the time on this — I'll split out the recalculation first and see if the totals bug shows up more clearly once it's isolated.
+
+## Part 3: Real work
+
+Task 5: Real help request
+
+Context: I'm working on addBook() in features/add-book/AddBookForm.md for Sprint 1 of my Book Tracker. The function references db.books.insert() but there's no database layer in the repo yet — it's the first real code in a repo that's otherwise planning docs.
+
+What I tried: Checked my Sprint 1 backlog and epics docs to see if I'd specified a persistence approach — I hadn't; the acceptance criteria describe behavior but not storage. I also looked at whether the assignment expected runnable code or just a documented function, and it's the latter, so I'm not blocked on submitting.
+
+Exact situation: addBook() is written and documented but can't actually run calling it throws ReferenceError: db is not defined.
+
+Ask: For Sprint 1, should I stub persistence with an in-memory array to get the CRUD stories actually working, or is it better to pick the real storage approach now so I'm not rewriting it in a week?
+
+Task 7: Reflect on real feedback received
+
+The feedback I got this week was on AddBookForm.md: that the old scaffolding comment (// Add Book feature scaffolding for Sprint 1) was still sitting above the real code instead of being removed when I replaced it, and that the file was saved as UTF-16 instead of UTF-8 like the rest of the repo.
+
+What made it useful was that both points were concrete and actionable not "clean this up" but the exact line still there, and the exact reason the encoding mattered (diffs showing the whole file as changed instead of just the real edit). I didn't have to guess what "cleaner" meant or go hunting for the problem myself.
+
+How I responded: I didn't just fix it silently, I want to actually understand why the encoding issue happened before I re-save it, since if VS Code or my terminal is defaulting to UTF-16 somewhere, it'll keep happening on future files too, not just this one. So my plan is: fix this file's encoding, then check whether it's a one-off or a setting I need to change so it doesn't recur.
+
+Task 8: Before/after
+
+Before: git commit -m "Add real code with comment fix (Task 6) and Epic ADR (Task 7)"
+
+After: Two commits — git commit -m "Replace add-book scaffolding with real addBook() implementation" and git commit -m "Add ADR 0001: use custom field for Epic instead of tag"
+
+What changed and why: The original bundles two unrelated changes and describes them by assignment task number rather than by what they do. Task numbers are meaningful to me this week and meaningless in three months. The rewrite splits them so each change is independently revertable, and describes the change itself so git log is searchable by what happened rather than by which homework prompted it.
+
+## NOTES-Nadio75.md Updates — Assignment 3.3
+
+1. What the "BudgetBuddy" practice revealed
+
+Rewriting the bad BudgetBuddy question ("the totals aren't adding up right, anyone know why?") made the structure obvious in a low-stakes way — it's easy to spot vagueness in someone else's made-up message. Writing Task 5 for real showed the harder version of the same habit: I don't naturally write "what I tried" before asking, I go straight to the ask. Having just rebuilt BudgetBuddy's question with that structure fresh in mind is the only reason I remembered to include it in my own.
+
+2. The self-check you almost skipped
+
+Yes, while working through this assignment, not just Task 5. Twice I hit a PowerShell error (the cat << EOF heredoc, then cat > triggering Get-Content) and asked what was wrong before reading the prompt I was already looking at, which said PS C:\Users\... the whole time. That's a smaller version of exactly what Question 2 is asking about the cheapest self-check available was right there and I skipped it under momentum, not because it was hard to find.
+
+3. Giving feedback on something real
+
+Writing PR feedback on my own AddBookForm.md felt different from BudgetBuddy in one specific way: with BudgetBuddy, I invented both the problem and the fix, so there was no risk of being wrong. With my real file, I had to actually check the file (confirm the scaffolding comment was still there, confirm the encoding) before writing anything — feedback on real work only stays specific if it's grounded in something you verified, not just plausible-sounding advice. That made it slower to write but also made it something I'd actually trust if someone gave it to me.
+
+## Stretch Goal A — 3-message async Slack thread
+
+Day 1 — blocked:
+
+Nadio: Blocked on addBook(), the function's written and documented, but there's no db object defined anywhere in the repo yet, so calling it throws ReferenceError: db is not defined. Checked my Sprint 1 backlog and epics docs; neither specifies a persistence approach. Not blocking my documentation work, but I can't actually test the function running. Will update once I've decided on a stub vs. real storage.
+
+Day 2 — partial update:
+
+Nadio: Update on the addBook() blocker — going with an in-memory array stub for now (db = { books: [] } with a basic .insert()) rather than picking real storage yet, since Sprint 1's just about proving the CRUD logic works. Function runs and returns the expected object now. Not persisting across restarts yet, which is fine for this sprint but I'll need a real decision before Sprint 2.
+
+Day 3 — resolved:
+
+Nadio: Closing this out — addBook() is fully working against the in-memory stub, all Sprint 1 acceptance criteria pass (required fields validated, genre optional, status defaults to "Want to Read"). Documented the stub limitation in the README's Known limitations section so it's not a surprise later. Moving on to editBook() next.
+
+### Links
+
+- Real PR feedback (Task 6) — scaffolding comment: https://github.com/Nadio75/Nadio75-daily-app/pull/13#issuecomment-5696295035
+- Real PR feedback (Task 6) — encoding comment: https://github.com/Nadio75/Nadio75-daily-app/pull/13#issuecomment-5696304517
