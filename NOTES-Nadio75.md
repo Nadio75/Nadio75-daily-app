@@ -303,3 +303,22 @@ Yes, while working through this assignment, not just Task 5. Twice I hit a Power
 3. Giving feedback on something real
 
 Writing PR feedback on my own AddBookForm.md felt different from BudgetBuddy in one specific way: with BudgetBuddy, I invented both the problem and the fix, so there was no risk of being wrong. With my real file, I had to actually check the file (confirm the scaffolding comment was still there, confirm the encoding) before writing anything — feedback on real work only stays specific if it's grounded in something you verified, not just plausible-sounding advice. That made it slower to write but also made it something I'd actually trust if someone gave it to me.
+
+## Stretch Goal A — 3-message async Slack thread
+
+Day 1 — blocked:
+
+Nadio: Blocked on addBook(), the function's written and documented, but there's no db object defined anywhere in the repo yet, so calling it throws ReferenceError: db is not defined. Checked my Sprint 1 backlog and epics docs; neither specifies a persistence approach. Not blocking my documentation work, but I can't actually test the function running. Will update once I've decided on a stub vs. real storage.
+
+Day 2 — partial update:
+
+Nadio: Update on the addBook() blocker — going with an in-memory array stub for now (db = { books: [] } with a basic .insert()) rather than picking real storage yet, since Sprint 1's just about proving the CRUD logic works. Function runs and returns the expected object now. Not persisting across restarts yet, which is fine for this sprint but I'll need a real decision before Sprint 2.
+
+Day 3 — resolved:
+
+Nadio: Closing this out — addBook() is fully working against the in-memory stub, all Sprint 1 acceptance criteria pass (required fields validated, genre optional, status defaults to "Want to Read"). Documented the stub limitation in the README's Known limitations section so it's not a surprise later. Moving on to editBook() next.
+
+### Links
+
+- Real PR feedback (Task 6) — scaffolding comment: https://github.com/Nadio75/Nadio75-daily-app/pull/13#issuecomment-5696295035
+- Real PR feedback (Task 6) — encoding comment: https://github.com/Nadio75/Nadio75-daily-app/pull/13#issuecomment-5696304517
